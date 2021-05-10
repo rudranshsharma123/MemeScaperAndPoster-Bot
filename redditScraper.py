@@ -20,6 +20,9 @@ class RedditHandler():
         self.post_time = [] 
         self.post_score = []
     def get_posts(self, number, subreddit, type):
+        '''
+        Use this function to get the memes from a particular sub reddit. 
+        '''
         sub = self.reddit.subreddit(subreddit)
         allowed_types = ['hot', 'new', 'rising', 'top']
 
@@ -70,6 +73,9 @@ class RedditHandler():
         return self.post_title
 
     def save_all(self, subreddit):
+        '''
+        Use this fucntion to download every meme you have scaped into your specified direcroty. 
+        '''
         print(">>Writing Everything to Disk. The data of ", subreddit, "is being saved....")
 
         dirpath = os.path.join('./', subreddit)
