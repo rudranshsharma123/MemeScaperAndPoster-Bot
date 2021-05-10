@@ -2,7 +2,7 @@ import psycopg2
 import numpy
 import functools
 import operator
-
+#Using Pyscop2 to connect to an existing Cockroach DB node. Removed all the variables due to privacy. Howeevr, you can add yours and it should work well. 
 conn = psycopg2.connect(
     database='your db name',
     user='your username',
@@ -35,7 +35,7 @@ class cockroachDB():
 
     def add_values(self, values:list[list]):
         '''
-        It is used to add the values which you pass into the database
+        It is used to add the values which you pass into the database. Make sure that you have the values as list of lists. i.e [[ALL VALUES OF TYPE 1 TO BE ADDED], [ALL VALUES OF TYPE 2 TO BE ADDED], .......]
         '''
         print(len(values), print(len(values[0])) )
         print(values)
