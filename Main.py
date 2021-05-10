@@ -78,14 +78,17 @@ roach = cockroachDB(conn)
 #Scrping Reddit for posts
 
 a = redditbot.get_posts(10, 'cursedcomments', 'new')
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while len(a)<=9:
     pass
 b = None
 b= redditbot.save_all('cursedcomments')
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while not b:
     pass
 #getting the posts from reddit
 images = redditbot.return_values()
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while len(images) <2:
     pass
 print(len(images))
@@ -96,15 +99,19 @@ print(len(images[0]))
 
 check = None
 check = roach.create_table()
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while not check:
     pass
 check = None
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 check = roach.add_values(images)
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while not check:
     pass
 
 #Getting Images from CockRoachDB
 im = roach.get_values(printing= False)
+#Doing Async Tasks without using Async and Await (Had to do a quick fix)
 while not images:
     pass
 
