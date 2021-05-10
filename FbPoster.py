@@ -25,10 +25,16 @@ driver = webdriver.Firefox(executable_path="geckodriver", options=option)
 driver.get("https://www.facebook.com/")
 
 class fbPoster():
+  '''
+  Use this class to call Selenium to post your Images on your FaceBook Page
+  '''
   def __init__(self, driver):
     self.driver = driver
 ###Login To The Account
   def login(self, id,password):
+    '''
+    You need to pass in your ID and PASSWORD and this function will log you into your FaceBook account. 
+    '''
     email = self.driver.find_element_by_id("email")
     email.send_keys(id)
     Password = self.driver.find_element_by_id("pass")
@@ -38,6 +44,11 @@ class fbPoster():
     pass
 #### Post Content On FaceBook
   def post_content(self, post):
+    '''
+    This Function would post content for you on facebook. Since, from march 2021 Facebook has moved entirely to react and hence made many elements not accisble via Selenium this
+    function might be obelete by the time you try it. I have created it on 5/8/2021 and last tested on 5/10/2021. You can use this to post for you and not on your page. 
+    '''
+    
     button = self.driver.find_element_by_class_name("sx_0b6f88").click()
     sleep(3) ## A 3 second break in the program so that everythin loads perfectly
     actions= ActionChains(self.driver) ##Action Chains
@@ -50,12 +61,21 @@ class fbPoster():
     pass
 
   def go_to_page(self):
+    '''
+    Use this function to navigate to your page once you have logged in. One caviat to it is the page you want to visit must be on the top of you "My Pages" section 
+    on Facebook
+    '''
     page_button = self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div/div/div[1]/div[2]/ul/li/div/a/div[1]/div[2]/div/div/div/div/span/span")
     page_button.click()
     sleep(5)
   
   def post_on_page(self, image):
-      
+      '''
+    This Function would post content for you on facebook. Since, from march 2021 Facebook has moved entirely to react and hence made many elements not accisble via Selenium this
+    function might be obelete by the time you try it. I have created it on 5/8/2021 and last tested on 5/10/2021. Also, because of the use of react, passing in full images like 
+    driver.send_keys() has become very difficult (as the elements is not reachble via keyboad). So, here a workaroound has been implimeted. It just clicks on the post button and 
+    since, the cursor is automatically on the input box. So, it passss the keys immidiately. 
+    '''
       post_button = self.driver.find_element_by_xpath("/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div/div[4]/div[2]/div/div[2]/div[1]/div/div/div[1]/div[2]/div/div")
       sleep(5)
       post_button.click()
@@ -102,5 +122,5 @@ fb.post_on_page("https://i.redd.it/lt5sj6peb3y61.jpg") #Sample Image
 # login(username,password) 
 sleep(5)	
 # post_on_page()
-# content = "I am a Bot Posting On Facebook"  ## Demo Content
+# content = "I am a Bot Posting On Facebook"  ## Demo USe of post_on_page() function 
 # post_content(content)
